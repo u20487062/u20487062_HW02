@@ -1,0 +1,40 @@
+#bookBTN{
+    background-color: green;
+    color: white;
+    border-color: green;
+    width: 60%;
+}
+#bookBTN2{
+    background-color: green;
+    color: white;
+    border-color: green;
+    width: 60%;
+}
+#bookBTN3{
+    background-color: green;
+    color: white;
+    border-color: green;
+    width: 60%;
+}
+#bookBTN4{
+    background-color: green;
+    color: white;
+    border-color: green;
+    width: 60%;
+}
+
+#detailsBTN{
+    background-color: transparent;
+    color: blue;
+    border-color: blue;
+    width: 60%;
+}
+
+.card-footer
+{
+    height: 120px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
