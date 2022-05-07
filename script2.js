@@ -14,6 +14,9 @@ let movie = [
     }
 ]
 
+var storedNames = JSON.parse(localStorage.getItem("selectMovies"))
+console.log(storedNames[0].title)
+
 let oQuantity = 0;
 let total = 0;
 const quantity = document.getElementById("quantityAmount");

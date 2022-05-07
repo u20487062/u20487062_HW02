@@ -202,6 +202,7 @@ window.onload = function(){
         var quantity = movies[0].tickets_in_cart;
 
         selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
+        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
     }
 
     document.getElementById("bookBTN").addEventListener("click", function() {
