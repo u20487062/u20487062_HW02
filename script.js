@@ -92,9 +92,9 @@ document.getElementById("movie2").innerHTML += `<div class="card" style="width:3
                                                     <div class="card-header">Cinema ${movies[1].cinema_number}</div>
                                                     <img class="card-img-top" src="${movies[1].poster_url}" style="width:100%">
                                                     <div class="card-body">
-                                                        <h4 class="card-title">${movies[1].title}</h4>
+                                                        <h4 class="card-title" id="movieTitle2">${movies[1].title}</h4>
                                                         <p class="card-text" style="height: 230px">${movies[1].description}</p>
-                                                        <p class="card-text" style="text-align:right; font-size: 20px"><strong>R${movies[1].ticket_price}</strong></p>
+                                                        <p class="card-text" style="text-align:right; font-size: 20px" id="unitPrice2"><strong>R${movies[1].ticket_price}</strong></p>
                                                     <div class="card-footer">
                                                         <button type="button" class="btn btn-primary" id="detailsBTN" data-bs-toggle="modal" data-bs-target="#myModal2">Show Details</button><br><br>
                                                         
@@ -126,9 +126,9 @@ document.getElementById("movie3").innerHTML += `<div class="card" style="width:3
                                                     <div class="card-header">Cinema ${movies[2].cinema_number}</div>
                                                     <img class="card-img-top" src="${movies[2].poster_url}" style="width:100%">
                                                     <div class="card-body">
-                                                        <h4 class="card-title">${movies[2].title}</h4>
+                                                        <h4 class="card-title" id="movieTitle3">${movies[2].title}</h4>
                                                         <p class="card-text" style="height: 253px">${movies[2].description}</p>
-                                                        <p class="card-text" style="text-align:right; font-size: 20px"><strong>R${movies[2].ticket_price}</strong></p>
+                                                        <p class="card-text" style="text-align:right; font-size: 20px" id="unitPrice3"><strong>R${movies[2].ticket_price}</strong></p>
                                                     <div class="card-footer">
                                                         <button type="button" class="btn btn-primary" id="detailsBTN" data-bs-toggle="modal" data-bs-target="#myModal3">Show Details</button><br><br>
                                                         <button type="button" class="btn btn-primary" id="bookBTN3">BOOK TICKET</button>
@@ -159,9 +159,9 @@ document.getElementById("movie4").innerHTML += `<div class="card" style="width:3
                                                     <div class="card-header" id="cinema_title">Cinema ${movies[3].cinema_number}</div>
                                                     <img class="card-img-top" src="${movies[3].poster_url}" style="width:100%">
                                                     <div class="card-body">
-                                                        <h4 class="card-title">${movies[3].title}</h4>
+                                                        <h4 class="card-title" id="movieTitle4">${movies[3].title}</h4>
                                                         <p class="card-text" style="height: 253px">${movies[3].description}</p>
-                                                        <p class="card-text" style="text-align:right; font-size: 20px"><strong>R${movies[3].ticket_price}</strong></p>
+                                                        <p class="card-text" style="text-align:right; font-size: 20px" id="unitPrice4"><strong>R${movies[3].ticket_price}</strong></p>
                                                     <div class="card-footer">
                                                         <button type="button" class="btn btn-primary" id="detailsBTN" data-bs-toggle="modal" data-bs-target="#myModal4">Show Details</button><br><br>
                                                         <button type="button" class="btn btn-primary" id="bookBTN4">BOOK TICKET</button>
@@ -205,6 +205,33 @@ window.onload = function(){
         localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
     }
 
+    function addMovie2(){
+        var movieTitle = document.getElementById("movieTitle2").textContent;
+        var unitPrice = document.getElementById("unitPrice2").textContent;
+        var quantity = movies[0].tickets_in_cart;
+
+        selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
+        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+    }
+
+    function addMovie3(){
+        var movieTitle = document.getElementById("movieTitle3").textContent;
+        var unitPrice = document.getElementById("unitPrice3").textContent;
+        var quantity = movies[0].tickets_in_cart;
+
+        selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
+        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+    }
+
+    function addMovie4(){
+        var movieTitle = document.getElementById("movieTitle4").textContent;
+        var unitPrice = document.getElementById("unitPrice4").textContent;
+        var quantity = movies[0].tickets_in_cart;
+
+        selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
+        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+    }
+
     document.getElementById("bookBTN").addEventListener("click", function() {
         textHolder.innerHTML = ++count;
         movies[0].tickets_in_cart += 1;
@@ -215,16 +242,19 @@ window.onload = function(){
     document.getElementById("bookBTN2").addEventListener("click", function() {
         textHolder.innerHTML = ++count;
         movies[1].tickets_in_cart += 1;
+        addMovie2();
       
     });
     document.getElementById("bookBTN3").addEventListener("click", function() {
         textHolder.innerHTML = ++count;
         movies[2].tickets_in_cart += 1;
+        addMovie3();
       
     });
     document.getElementById("bookBTN4").addEventListener("click", function() {
         textHolder.innerHTML = ++count;
         movies[3].tickets_in_cart += 1;
+        addMovie4();
       
     });
 }
