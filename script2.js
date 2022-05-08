@@ -1,6 +1,13 @@
 var storedNames = JSON.parse(localStorage.getItem("selectMovies"))
 
+
 window.onload = function(){
+
+   if(storedNames.length == 2){
+       document.getElementById("tbody").innerHTML += '<tr>No movies in your cart</tr>'
+   }
+
+   else{
 
     for(var i = 0; i < storedNames.length; i++){
         document.getElementById("tbody").innerHTML += `<tr>
@@ -17,6 +24,8 @@ window.onload = function(){
                                                             <td id="rowTotal"></td>
                                                         </tr>`
     }
+
+   }
 }
 
 let oQuantity = 1;
