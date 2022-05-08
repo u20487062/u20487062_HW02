@@ -1,4 +1,15 @@
-var storedNames = JSON.parse(localStorage.getItem("selectMovies"))
+function loadCart() {
+    storedNames = JSON.parse(localStorage.getItem('selectMovies'));
+  
+}
+
+if (localStorage.getItem("selectMovies") != null) {
+    loadCart();
+  
+}
+
+var ticketCart = localStorage.getItem("numberInCart");
+document.getElementById("ticketCount").innerHTML = ticketCart;
 
 
 window.onload = function(){
@@ -31,17 +42,12 @@ window.onload = function(){
 let oQuantity = 0;
 
 function increaseQuantity(){
-    //document.getElementById("quantityAmount").innerHTML = "";
-
     document.getElementById("quantityAmount").innerHTML = `${oQuantity++}`
 }
 
 function decreaseQuantity(){
-    //document.getElementById("quantityAmount").innerHTML = "";
-
     document.getElementById("quantityAmount").innerHTML = `${oQuantity--}`
 }
-console.log(oQuantity)
 
 function RemoveRow() {
     var td = event.target.parentNode; 

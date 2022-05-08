@@ -196,13 +196,21 @@ window.onload = function(){
     const textHolder = document.getElementById("ticketCount");
     textHolder.innerHTML = count;
 
+    function saveToCart(){
+        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+    }
+
+    function savePrice(){
+        localStorage.setItem("numberInCart", count)
+    }
+
     function addMovie1(){
         var movieTitle = document.getElementById("movieTitle1").textContent;
         var unitPrice = document.getElementById("unitPrice1").textContent;
         var quantity = movies[0].tickets_in_cart;
 
         selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
-        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+        saveToCart();
     }
 
     function addMovie2(){
@@ -211,7 +219,7 @@ window.onload = function(){
         var quantity = movies[0].tickets_in_cart;
 
         selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
-        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+        saveToCart();
     }
 
     function addMovie3(){
@@ -220,7 +228,7 @@ window.onload = function(){
         var quantity = movies[0].tickets_in_cart;
 
         selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
-        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+        saveToCart();
     }
 
     function addMovie4(){
@@ -229,13 +237,14 @@ window.onload = function(){
         var quantity = movies[0].tickets_in_cart;
 
         selectedMovies.push({title: movieTitle, price: unitPrice, amount: quantity});
-        localStorage.setItem("selectMovies",JSON.stringify(selectedMovies))
+        saveToCart();
     }
 
     document.getElementById("bookBTN").addEventListener("click", function() {
         textHolder.innerHTML = ++count;
         movies[0].tickets_in_cart += 1;
-        addMovie1(); 
+        addMovie1();
+        savePrice(); 
     });
 
 
@@ -243,18 +252,21 @@ window.onload = function(){
         textHolder.innerHTML = ++count;
         movies[1].tickets_in_cart += 1;
         addMovie2();
+        savePrice();
       
     });
     document.getElementById("bookBTN3").addEventListener("click", function() {
         textHolder.innerHTML = ++count;
         movies[2].tickets_in_cart += 1;
         addMovie3();
+        savePrice();
       
     });
     document.getElementById("bookBTN4").addEventListener("click", function() {
         textHolder.innerHTML = ++count;
         movies[3].tickets_in_cart += 1;
         addMovie4();
+        savePrice();
       
     });
 }
