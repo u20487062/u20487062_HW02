@@ -271,3 +271,4 @@ window.onload = function(){
     });
 }
 
+console.log(selectedMovies)
