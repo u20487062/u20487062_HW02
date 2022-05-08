@@ -3,7 +3,7 @@ var storedNames = JSON.parse(localStorage.getItem("selectMovies"))
 
 window.onload = function(){
 
-   if(storedNames.length == 2){
+   if(storedNames.length == 0){
        document.getElementById("tbody").innerHTML += '<tr>No movies in your cart</tr>'
    }
 
@@ -12,14 +12,14 @@ window.onload = function(){
     for(var i = 0; i < storedNames.length; i++){
         document.getElementById("tbody").innerHTML += `<tr>
                                                             <td>
-                                                                    <button class="fa fa-close" style="border-style: hidden; background-color: white; color: red;"></button>
+                                                                    <button class="fa fa-close" style="border-style: hidden; background-color: white; color: red;" onclick="RemoveRow()"></button>
                                                                     ${storedNames[i].title}
                                                             </td>
                                                             <td id="tableUnitPrice">${storedNames[i].price}</td>
                                                             <td>
-                                                                    <button class="fa fa-toggle-left" id="decreaseAmount" style="border-style: hidden; background-color: white;"></button>
+                                                                    <button class="fa fa-toggle-left" id="decreaseAmount" style="border-style: hidden; background-color: white;" onclick="decreaseQuantity()"></button>
                                                                     <div id="quantityAmount">${storedNames[i].amount}</div>
-                                                                    <button class="fa fa-toggle-right" style="border-style: hidden; background-color: white;" onclick="increaseQuantity()"></button>
+                                                                    <button class="fa fa-toggle-right" id ="increaseAmount" style="border-style: hidden; background-color: white;" onclick="increaseQuantity()"></button>
                                                             </td>
                                                             <td id="rowTotal"></td>
                                                         </tr>`
@@ -28,14 +28,23 @@ window.onload = function(){
    }
 }
 
-let oQuantity = 1;
-const quantity = document.getElementById("quantityAmount");
-quantity.innerHTML = oQuantity;
-
-document.getElementById("decreaseAmount").addEventListener("click",function(){
-    quantity.innerHTML = --oQuantity;
-})
+let oQuantity = 0;
 
 function increaseQuantity(){
-    quantity.innerHTML = ++oQuantity;
+    //document.getElementById("quantityAmount").innerHTML = "";
+
+    document.getElementById("quantityAmount").innerHTML = `${oQuantity++}`
+}
+
+function decreaseQuantity(){
+    //document.getElementById("quantityAmount").innerHTML = "";
+
+    document.getElementById("quantityAmount").innerHTML = `${oQuantity--}`
+}
+console.log(oQuantity)
+
+function RemoveRow() {
+    var td = event.target.parentNode; 
+    var tr = td.parentNode;
+    tr.parentNode.removeChild(tr);
 }
